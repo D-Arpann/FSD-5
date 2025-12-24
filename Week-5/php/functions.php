@@ -15,7 +15,7 @@ function cleanSkills($string) {
 function saveStudent($name, $email, $skillsArray) {
     try {
         $skillsString = implode(", ", $skillsArray);
-        $record = "$name|$email|$skillsString" . PHP_EOL;
+        $record = "$name|$email|$skillsString\n";
 
         if(file_put_contents('students.txt', $record, FILE_APPEND | LOCK_EX) === false) {
              throw new Exception("Error writing to storage file.");
@@ -55,4 +55,5 @@ function uploadPortfolioFile($file) {
         return "Error: " . $e->getMessage();
     }
 }
+
 ?>
